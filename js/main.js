@@ -5,9 +5,7 @@ var str = window.location.href;
 var n = str.split("="); 
 var p = n[1].split("&");
 
-//console.log(p[0]);
-//console.log(n[2]);
-
+//TODO: kein Runden
 var vessel_lat = parseFloat(p[0]);
 var vessel_long = parseFloat(n[2]);
 var map_zoom = 8;
@@ -18,7 +16,7 @@ var map_units = 'metric'; // imperial °F, default K
   MAP SETUP
 ***********************************/
 // Position_Lat="50406" Position_Long="-66456" ?!
-var mymap = L.map('map-div').setView([vessel_lat, vessel_long], map_zoom);
+var mymap = L.map('map-div', {zoomControl: false, center: [vessel_lat, vessel_long], zoom: map_zoom})
 
 /***********************************
   LAYERS
@@ -35,7 +33,7 @@ L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 L.tileLayer('http://{s}.tile.openweathermap.org/map/{layername}/{z}/{x}/{y}.png', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
     layername: 'wind',
-    opacity: 0.5
+    opacity: 0.4
 }).addTo(mymap);
 
 /***********************************
@@ -104,18 +102,22 @@ function getWind() {
 
             document.getElementById('td-lat').innerHTML = data.coord.lat;
             document.getElementById('td-lon').innerHTML = data.coord.lon;
-            document.getElementById('td-temp').innerHTML = data.main.temp;
-            document.getElementById('td-hum').innerHTML = data.main.humidity;
-            document.getElementById('td-wind-speed').innerHTML = data.wind.speed;
+            document.getElementById('td-temp').innerHTML = data.main.temp+'°C';
+            document.getElementById('td-hum').innerHTML = data.main.humidity+'%';
+            document.getElementById('td-wind-speed').innerHTML = data.wind.speed+'m/s';
             
             if (data.wind.deg != undefined){
-                document.getElementById('td-wind-deg').innerHTML = data.wind.deg + ' ' + '<span><img id="wind-icon" src="img/wind-icon.png"></img></span>';
+                document.getElementById('td-wind-deg').innerHTML = data.wind.deg + '° ' + '<span><img id="wind-icon" src="img/wind-icon.png"></img></span>';
                 document.getElementById('wind-icon').style.transform = 'rotate(' + data.wind.deg + 'deg)';
             } else {
                 document.getElementById('td-wind-deg').innerHTML = 'N/A';
                 document.getElementById('wind-icon').style.display = 'none';
             }
             
+            document.getElementById('td-warn').innerHTML = data.weather[0].description;
+
+            //TODO: Warnings
+
         },
         function(data){
             console.log('Error: ' + data);

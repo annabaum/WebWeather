@@ -56,6 +56,22 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+table {
+    /*border-bottom-left-radius: 4px;*/
+    font: bold 12px 'Trebuchet MS', Helvetica, sans-serif;
+    line-height: 20px;
+    text-indent: 1px;
+    border-radius: 4px;
+    border-bottom: none;
+    padding: 5px;
+}
+
+td {
+    padding:0 5px;
+    word-wrap:break-word;
+    vertical-align: top;
+    max-width: 80px;
+}
 
 #map-div {
     height: 700px; 
@@ -69,24 +85,20 @@ textarea {
     background-color: white;
 }
 
-table {
-    /*border-bottom-left-radius: 4px;*/
-    font: bold 12px 'Trebuchet MS', Helvetica, sans-serif;
-    line-height: 20px;
-    text-indent: 1px;
-    border-radius: 4px;
-    border-bottom: none;
-    padding: 5px;
-}
-
-td {
-    padding:0 5px;
-}
-
-#wind-icon{
+#wind-icon {
     width:15px;
     height:15px;
 }
+
+#macs-logo {
+    max-width: 180px;
+    width: 160px;
+    height: auto;
+    padding-top: 5px;
+    padding-bottom: 3px;
+}
+
+
 
 
 
