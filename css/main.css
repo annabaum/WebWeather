@@ -58,11 +58,35 @@ textarea {
 
 
 #map-div {
-    height: 600px; 
+    height: 700px; 
 }
 
+#info-div {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    background-color: white;
+}
 
+table {
+    /*border-bottom-left-radius: 4px;*/
+    font: bold 12px 'Trebuchet MS', Helvetica, sans-serif;
+    line-height: 20px;
+    text-indent: 1px;
+    border-radius: 4px;
+    border-bottom: none;
+    padding: 5px;
+}
 
+td {
+    padding:0 5px;
+}
+
+#wind-icon{
+    width:15px;
+    height:15px;
+}
 
 
 
